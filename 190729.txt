@@ -1,0 +1,3 @@
+SELECT *
+FROM userinfo right join live on live.uid = userinfo.uid
+    right join house on live.hid = house.hid
