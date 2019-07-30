@@ -1,0 +1,7 @@
+找出王大明的姓名，住址，身分證字號，電話(先下where的指令，最後再下select指令)
+SELECT live.uid,cname,address,tel
+FROM userinfo,live,house,phone
+WHERE userinfo.uid = live.uid AND
+		live.hid = house.hid AND
+        house.hid = phone.hid AND
+        cname = '王大明'
