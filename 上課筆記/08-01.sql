@@ -259,5 +259,5 @@ MYSQL8用的是INNODB引擎，這個是正規的
 
 
 
-作業 : 
+作業 : 5
 用PROCEDURE做random的函式產生資料
