@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2019 年 07 月 31 日 03:51
+-- 產生時間： 2019 年 08 月 02 日 11:47
 -- 伺服器版本： 10.3.16-MariaDB
 -- PHP 版本： 7.1.30
 
@@ -29,10 +29,20 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `customer_info` (
-  `customer_id` int(10) NOT NULL,
-  `customer_name` varchar(20) NOT NULL,
-  `headshot` blob DEFAULT NULL
+  `customer_id` int(10) NOT NULL COMMENT '客戶ID',
+  `customer_name` varchar(20) NOT NULL COMMENT '客戶名稱',
+  `headshot` blob DEFAULT NULL COMMENT '大頭照',
+  `created_at` datetime NOT NULL COMMENT '註冊時間',
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() COMMENT '更新時間'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- 傾印資料表的資料 `customer_info`
+--
+
+INSERT INTO `customer_info` (`customer_id`, `customer_name`, `headshot`, `created_at`, `updated_at`) VALUES
+(1, 'test', NULL, '2019-07-30 00:00:00', '2019-07-31 09:02:07'),
+(2, 'test2', NULL, '2019-07-30 00:00:00', '2019-07-31 09:05:10');
 
 -- --------------------------------------------------------
 
@@ -41,16 +51,16 @@ CREATE TABLE `customer_info` (
 --
 
 CREATE TABLE `product_info` (
-  `product_id` int(100) NOT NULL,
-  `product_name` varchar(30) NOT NULL,
-  `photo1` blob DEFAULT NULL,
-  `photo2` blob DEFAULT NULL,
-  `photo3` blob DEFAULT NULL,
-  `photo4` blob DEFAULT NULL,
-  `photo5` blob DEFAULT NULL,
-  `photo6` blob DEFAULT NULL,
-  `photo7` blob DEFAULT NULL,
-  `photo8` blob DEFAULT NULL
+  `product_id` int(11) NOT NULL COMMENT '產品id',
+  `product_name` varchar(30) NOT NULL COMMENT '產品名稱',
+  `photo1` blob DEFAULT NULL COMMENT '影像資料1',
+  `photo2` blob DEFAULT NULL COMMENT '影像資料2',
+  `photo3` blob DEFAULT NULL COMMENT '影像資料3',
+  `photo4` blob DEFAULT NULL COMMENT '影像資料4',
+  `photo5` blob DEFAULT NULL COMMENT '影像資料5',
+  `photo6` blob DEFAULT NULL COMMENT '影像資料6',
+  `photo7` blob DEFAULT NULL COMMENT '影像資料7',
+  `photo8` blob DEFAULT NULL COMMENT '影像資料8'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -60,10 +70,10 @@ CREATE TABLE `product_info` (
 --
 
 CREATE TABLE `transaction` (
-  `transaction_id` int(100) NOT NULL,
-  `product_id` int(100) NOT NULL,
-  `customer_id` int(100) NOT NULL,
-  `transaction_time` datetime NOT NULL
+  `transaction_id` int(100) UNSIGNED NOT NULL COMMENT '交易記錄id',
+  `product_id` int(100) NOT NULL COMMENT '產品id',
+  `customer_id` int(100) NOT NULL COMMENT '客戶id',
+  `transaction_time` datetime NOT NULL COMMENT '交易時間'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -98,19 +108,19 @@ ALTER TABLE `transaction`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `customer_info`
 --
 ALTER TABLE `customer_info`
-  MODIFY `customer_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `customer_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '客戶ID', AUTO_INCREMENT=3;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `product_info`
 --
 ALTER TABLE `product_info`
-  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '產品id';
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `transaction_id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `transaction_id` int(100) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '交易記錄id', AUTO_INCREMENT=2;
 
 --
 -- 已傾印資料表的限制式
