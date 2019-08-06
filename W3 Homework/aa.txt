@@ -3,6 +3,7 @@ INSERT INTO `product_info` (`product_id`, `product_name`, `photo1`, `photo2`, `p
 
 
 學習網址
+https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/221671/       !!!!!!!!!!
 https://www.wibibi.com/info.php?tid=123  
 https://www.wibibi.com/info.php?tid=271
 https://www.wibibi.com/info.php?tid=407
