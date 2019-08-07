@@ -1,1 +1,1 @@
-# MySQL-PHP
+# MySQL
